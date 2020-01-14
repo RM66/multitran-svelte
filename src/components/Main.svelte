@@ -1,17 +1,26 @@
 <script>
-  import FormField from "@smui/form-field";
-  import { Input } from "@smui/textfield";
+  import LangSelect from "../elements/LangSelect.svelte";
 </script>
 
 <style>
   main {
     flex-grow: 1;
   }
+
+  form {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 25vh;
+  }
 </style>
 
 <main>
-  <img src="logo.png" alt="logo" />
-  <FormField>
-    <Input />
-  </FormField>
+  <form>
+    <img src="logo.png" alt="logo" />
+    <input type="search" placeholder="Enter the word" />
+    <LangSelect />
+    <LangSelect />
+    <button>Translate</button>
+  </form>
 </main>

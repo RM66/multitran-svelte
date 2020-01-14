@@ -1,4 +1,4 @@
-export default LANGS = {
+export default {
   Arabic: 10,
   Basque: 68,
   Bulgarian: 15,

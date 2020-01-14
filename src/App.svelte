@@ -41,15 +41,6 @@
     height: 100%;
     margin: 0;
   }
-
-  :global(a) {
-    color: var(--cl-indigo);
-    text-decoration: none;
-  }
-
-  :global(a:hover) {
-    text-decoration: underline;
-  }
 </style>
 
 <Main />

@@ -1,3 +1,7 @@
+<script>
+  import ExtLink from "../elements/ExtLink.svelte";
+</script>
+
 <style>
   footer {
     color: var(--cl-grey);
@@ -9,7 +13,7 @@
 
 <footer>
   Powered by
-  <a href="//multitran.com" target="_blank" rel="noopener">Multitran</a>
+  <ExtLink href="//multitran.com">Multitran</ExtLink>
   &ensp;|&ensp; Made by
-  <a href="//github.com/RM66" target="_blank" rel="noopener">Roma Y.</a>
+  <ExtLink href="//github.com/RM66">Roma Y.</ExtLink>
 </footer>

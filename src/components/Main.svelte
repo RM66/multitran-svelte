@@ -1,5 +1,6 @@
 <script>
   import LangSelect from "../elements/LangSelect.svelte";
+  import { query } from '../stores/transl.js';
 </script>
 
 <style>
@@ -18,9 +19,9 @@
 <main>
   <form>
     <img src="logo.png" alt="logo" />
-    <input type="search" placeholder="Enter the word" />
-    <LangSelect />
-    <LangSelect />
-    <button>Translate</button>
+    <input bind:value={$query} type="search" placeholder="Enter the word" />
+    <LangSelect from />
+    <LangSelect to />
+    <button disabled={!$query}>Translate</button>
   </form>
 </main>

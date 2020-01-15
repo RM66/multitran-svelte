@@ -1,4 +1,6 @@
-export default {
+import { writable } from 'svelte/store';
+
+export const langList = {
   Arabic: 10,
   Basque: 68,
   Bulgarian: 15,
@@ -37,3 +39,7 @@ export default {
   Turkish: 32,
   Ukrainian: 33
 };
+
+export const langFrom = writable(langList.English);
+
+export const langTo = writable(langList.Russian);

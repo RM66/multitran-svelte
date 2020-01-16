@@ -2,6 +2,4 @@
   export let src;
 </script>
 
-<style></style>
-
-<iframe {src}/>
+<iframe {src} name="mtr" hidden title sandbox referrerpolicy="no-referrer" csp="default-src *" />

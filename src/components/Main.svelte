@@ -1,6 +1,7 @@
 <script>
+  import IFrame from "../components/IFrame.svelte";
   import LangSelect from "../elements/LangSelect.svelte";
-  import { query } from '../stores/transl.js';
+  import { loading, query, translate, src } from '../stores/translation.js';
 </script>
 
 <style>
@@ -17,11 +18,15 @@
 </style>
 
 <main>
-  <form>
+  <form on:submit|preventDefault={() => $loading = true}>
     <img src="logo.png" alt="logo" />
     <input bind:value={$query} type="search" placeholder="Enter the word" />
     <LangSelect from />
     <LangSelect to />
-    <button disabled={!$query}>Translate</button>
+    <button disabled={$loading || !$query}>Translate</button>
   </form>
+  {#if $loading && $query}
+    <i>loading&hellip;</i>
+  {/if}
 </main>
+<IFrame src={$src} />

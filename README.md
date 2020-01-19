@@ -1,1 +1,1 @@
-### Client for Multitran written on Svelte & proxy
+### Client for Multitran written on Svelte & proxy with parser

@@ -1,6 +1,6 @@
 {
   "name": "multitran-svelte",
-  "description": "Client for Multitran written on Svelte & proxy",
+  "description": "Client for Multitran written on Svelte & proxy with parser",
   "license": "Apache-2.0",
   "author": {
     "name": "Roma Y.",

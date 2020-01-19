@@ -1,0 +1,14 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "html-miner": "^1.2.5",
+    "htmldom": "^4.0.11",
+    "node-html-parser": "^1.1.18",
+    "polka": "^0.5.2",
+    "request-promise": "^4.2.5"
+  }
+}

@@ -6,12 +6,10 @@ export const langTo = writable(langs.Russian);
 export const query = writable('');
 export const loading = writable(false);
 
-export const src = derived(
-  [loading, langFrom, langTo, query],
-  ([$loading, $langFrom, $langTo, $query]) =>
-    $loading
-      ? `https://www.multitran.com/m.exe?s=${$query}&l1=${$langFrom}&l2=${$langTo}`
-      : null
-);
+export const src = derived([langFrom, langTo, query], ([$langFrom, $langTo, $query]) => {
+  if (!$query) return;
+  loading.set(true);
+  return `https://www.multitran.com/m.exe?s=${$query}&l1=${$langFrom}&l2=${$langTo}`;
+});
 
 export const result = writable();

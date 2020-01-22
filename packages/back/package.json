@@ -5,8 +5,10 @@
     "start": "node index"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "html-miner": "^1.2.5",
     "htmldom": "^4.0.11",
+    "htmlparser2": "^4.0.0",
     "node-html-parser": "^1.1.18",
     "polka": "^0.5.2",
     "request-promise": "^4.2.5"

@@ -1,7 +1,7 @@
-const htmlparser2 = require('htmlparser2');
 // const cheerio = require('cheerio');
 // const htmlMiner = require('html-miner');
 // const createHtmlDom = require('htmldom');
+const htmlparser2 = require('htmlparser2');
 // const { parse } = require('node-html-parser');
 
 /* Html structure:
@@ -56,27 +56,41 @@ const htmlparser2 = require('htmlparser2');
 const parseMtr = function(html) {
   let formTransPassed;
   let inTargetTable;
+  const result = [];
+
   const parser = new htmlparser2.Parser(
     {
-      onopentag(tag, attrs) {
-        if (tag === 'form' && attrs.id === 'translation') formTransPassed = true;
-        else if (tag === 'table' && formTransPassed && !inTargetTable) inTargetTable = true;
+      onopentag(name, attrs) {
+        if (name === 'form' && attrs.id === 'translation') formTransPassed = true;
+        else if (name === 'table' && formTransPassed) inTargetTable = true;
       },
-      ontext(text) {},
-      onclosetag(tag) {}
+      ontext(text) {
+        if (inTargetTable) result.push(text);
+      },
+      onclosetag(name) {
+        if (name === 'table' && inTargetTable) {
+          inTargetTable = false;
+          parser.end();
+          console.log('end 1');
+        }
+      }
     },
     { decodeEntities: true }
   );
   parser.write(html);
-  parser.end();
+  console.log('end 2');
+
   // const root = parse(html);
   // console.log(root.querySelectorAll('table')[1]);
+
   // const $ = createHtmlDom(html);
   // console.log($('#translation ~ table')[0]);
+
   // console.log(htmlMiner(html, '#translation ~ table')[0]);
+
   // const $ = cheerio.load(html);
   // console.log($('#translation ~ table'));
-  return '';
+  return result.toString();
 };
 
 module.exports = parseMtr;

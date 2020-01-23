@@ -2,7 +2,7 @@
   "name": "back",
   "version": "1.0.0",
   "scripts": {
-    "start": "node index"
+    "start": "nodemon index"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -12,5 +12,8 @@
     "node-html-parser": "^1.1.18",
     "polka": "^0.5.2",
     "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

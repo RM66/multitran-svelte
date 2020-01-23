@@ -54,31 +54,31 @@ const htmlparser2 = require('htmlparser2');
 */
 
 const parseMtr = function(html) {
-  let formTransPassed;
-  let inTargetTable;
+  let beforeTarget, inTargetTable;
   const result = [];
 
   const parser = new htmlparser2.Parser(
     {
       onopentag(name, attrs) {
-        if (name === 'form' && attrs.id === 'translation') formTransPassed = true;
-        else if (name === 'table' && formTransPassed) inTargetTable = true;
+        if (name === 'form' && attrs.id === 'translation') beforeTarget = true;
+        else if (name === 'table' && beforeTarget) {
+          beforeTarget = false;
+          inTargetTable = true;
+        }
       },
       ontext(text) {
         if (inTargetTable) result.push(text);
       },
       onclosetag(name) {
-        if (name === 'table' && inTargetTable) {
-          inTargetTable = false;
-          parser.end();
-          console.log('end 1');
-        }
+        if (name === 'table' && inTargetTable) inTargetTable = false;
       }
-    },
-    { decodeEntities: true }
+    } /*,
+    { decodeEntities: true }*/
   );
+  console.time();
   parser.write(html);
-  console.log('end 2');
+  parser.end();
+  console.timeEnd();
 
   // const root = parse(html);
   // console.log(root.querySelectorAll('table')[1]);

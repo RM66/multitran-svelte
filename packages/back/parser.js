@@ -1,8 +1,4 @@
-// const cheerio = require('cheerio');
-// const htmlMiner = require('html-miner');
-// const createHtmlDom = require('htmldom');
 const htmlparser2 = require('htmlparser2');
-// const { parse } = require('node-html-parser');
 
 /* Html structure:
 <body>
@@ -53,8 +49,15 @@ const htmlparser2 = require('htmlparser2');
         …
 */
 
+const tdTypes = {
+  gray: 'head',
+  subj: 'subj',
+  trans: 'tran'
+};
+
 const parseMtr = function(html) {
   let beforeTarget, inTargetTable;
+  let currentTd;
   const result = [];
 
   const parser = new htmlparser2.Parser(
@@ -64,33 +67,34 @@ const parseMtr = function(html) {
         else if (name === 'table' && beforeTarget) {
           beforeTarget = false;
           inTargetTable = true;
+        } else if (inTargetTable && name === 'td') {
+          currentTd = tdTypes[attrs.class];
         }
       },
       ontext(text) {
-        if (inTargetTable) result.push(text);
+        if (inTargetTable && currentTd) {
+          result.push({
+            type: currentTd,
+            text
+          });
+        }
       },
       onclosetag(name) {
-        if (name === 'table' && inTargetTable) inTargetTable = false;
+        if (inTargetTable) {
+          if (name === 'table') inTargetTable = false;
+          else if (name === 'td') currentTd = null;
+        }
       }
     } /*,
     { decodeEntities: true }*/
   );
+
   console.time();
   parser.write(html);
   parser.end();
   console.timeEnd();
 
-  // const root = parse(html);
-  // console.log(root.querySelectorAll('table')[1]);
-
-  // const $ = createHtmlDom(html);
-  // console.log($('#translation ~ table')[0]);
-
-  // console.log(htmlMiner(html, '#translation ~ table')[0]);
-
-  // const $ = cheerio.load(html);
-  // console.log($('#translation ~ table'));
-  return result.toString();
+  return JSON.stringify(result);
 };
 
 module.exports = parseMtr;

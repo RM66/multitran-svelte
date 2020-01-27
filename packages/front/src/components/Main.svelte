@@ -1,9 +1,8 @@
 <script>
-  import IFrame from '../components/IFrame.svelte';
   import LangSelect from '../elements/LangSelect.svelte';
-  import { loading, query, translate, src } from '../stores/translation.js';
+  import { loading, query, translate } from '../stores/translation.js';
 
-  let inputVal;
+  let inputVal = '';
 </script>
 
 <style>
@@ -20,7 +19,7 @@
 </style>
 
 <main>
-  <form on:submit|preventDefault={() => ($query = inputVal.trim())}>
+  <form on:submit|preventDefault={() => (translate(inputVal.trim()))}>
     <img src="logo.png" alt="logo" />
     <input bind:value={inputVal} type="search" placeholder="Enter the word" />
     <LangSelect from />
@@ -31,4 +30,3 @@
     <i>loading&hellip;</i>
   {/if}
 </main>
-<IFrame src={$src} />

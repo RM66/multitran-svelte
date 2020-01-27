@@ -60,34 +60,31 @@ const parseMtr = function(html) {
   let currentTd;
   const result = [];
 
-  const parser = new htmlparser2.Parser(
-    {
-      onopentag(name, attrs) {
-        if (name === 'form' && attrs.id === 'translation') beforeTarget = true;
-        else if (name === 'table' && beforeTarget) {
-          beforeTarget = false;
-          inTargetTable = true;
-        } else if (inTargetTable && name === 'td') {
-          currentTd = tdTypes[attrs.class];
-        }
-      },
-      ontext(text) {
-        if (inTargetTable && currentTd) {
-          result.push({
-            type: currentTd,
-            text
-          });
-        }
-      },
-      onclosetag(name) {
-        if (inTargetTable) {
-          if (name === 'table') inTargetTable = false;
-          else if (name === 'td') currentTd = null;
-        }
+  const parser = new htmlparser2.Parser({
+    onopentag(name, attrs) {
+      if (name === 'form' && attrs.id === 'translation') beforeTarget = true;
+      else if (name === 'table' && beforeTarget) {
+        beforeTarget = false;
+        inTargetTable = true;
+      } else if (inTargetTable && name === 'td') {
+        currentTd = tdTypes[attrs.class];
       }
-    } /*,
-    { decodeEntities: true }*/
-  );
+    },
+    ontext(text) {
+      if (inTargetTable && currentTd) {
+        result.push({
+          type: currentTd,
+          text
+        });
+      }
+    },
+    onclosetag(name) {
+      if (inTargetTable) {
+        if (name === 'table') inTargetTable = false;
+        else if (name === 'td') currentTd = null;
+      }
+    }
+  });
 
   console.time();
   parser.write(html);

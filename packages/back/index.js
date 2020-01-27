@@ -2,7 +2,7 @@ const polka = require('polka');
 const rp = require('request-promise');
 const parseMtr = require('./parser');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 
 function getUri(params) {
   return `https://www.multitran.com/m.exe?s=${params.query}&l1=${params.langFrom}&l2=${params.langTo}&SHL=1`;

@@ -1,3 +1,4 @@
+import config from 'appRoot/config.js';
 import { writable } from 'svelte/store';
 import langs from '../constants/langs.js';
 
@@ -11,12 +12,13 @@ export const translate = str => {
   if (!str) return;
   query.set(str);
   const params = new URLSearchParams({
-    query: $query,
-    langFrom: $langFrom,
-    langTo: $langTo
+    //TODO: брать значения из writable
+    query: query,
+    langFrom: langFrom,
+    langTo: langTo
   });
   loading.set(true);
-  fetch(`http://localhost:4000/?${params}`)
+  fetch(`http://localhost:${config.backPort}/?${params}`)
     .then(data => data.json())
     .then(data => {
       result.set(data);

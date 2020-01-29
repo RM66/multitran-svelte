@@ -72,10 +72,15 @@ const parseMtr = function(html) {
     },
     ontext(text) {
       if (inTargetTable && currentTd) {
-        result.push({
-          type: currentTd,
-          text
-        });
+        const last = result.length ? result[result.length - 1] : {};
+        if (last.type === currentTd) {
+          last.text.push(text);
+        } else {
+          result.push({
+            type: currentTd,
+            text: [text]
+          });
+        }
       }
     },
     onclosetag(name) {

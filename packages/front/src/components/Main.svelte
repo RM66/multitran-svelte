@@ -1,6 +1,6 @@
 <script>
   import LangSelect from '../elements/LangSelect.svelte';
-  import { loading, query, translate } from '../stores/translation.js';
+  import { query, result, translate } from '../stores/translation.js';
 
   let inputVal = '';
 </script>
@@ -8,13 +8,25 @@
 <style>
   main {
     flex-grow: 1;
+    text-align: center;
+  }
+
+  img {
+    margin: -1px 0 -4px -2px;
+    width: 48px;
   }
 
   form {
     align-items: center;
-    display: flex;
+    border: 1px solid var(--cl-gray);
+    border-radius: 48px;
+    display: inline-flex;
     justify-content: center;
     margin-top: 25vh;
+  }
+
+  form > * {
+    border: 0;
   }
 </style>
 
@@ -26,7 +38,11 @@
     <LangSelect to />
     <button>Translate</button>
   </form>
-  {#if $loading && $query}
-    <i>loading&hellip;</i>
-  {/if}
+  <div>
+    {#await $result}
+      <i>loading&hellip;</i>
+    {:then data}
+      <p>{data || ''}</p>
+    {/await}
+  </div>
 </main>

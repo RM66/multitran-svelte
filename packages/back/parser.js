@@ -91,10 +91,8 @@ const parseMtr = function(html) {
     }
   });
 
-  console.time();
   parser.write(html);
   parser.end();
-  console.timeEnd();
 
   return JSON.stringify(result);
 };

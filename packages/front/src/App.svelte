@@ -4,11 +4,14 @@
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
   :global(:root) {
     --cl-blue: #0f4c81;
     --cl-light-blue: #4c77b1;
     --cl-dark-blue: #002554;
     --cl-gray: #aaa;
+    --cl-dark-gray: #888;
     --tr-time: 200ms;
   }
 
@@ -22,10 +25,12 @@
     color: #333;
     display: flex;
     flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     height: 100%;
     margin: 0;
+  }
+
+  :global(*) {
+    font-family: Comfortaa, Verdana, cursive;
   }
 </style>
 

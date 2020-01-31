@@ -7,15 +7,20 @@ export const langTo = writable(langs.Russian);
 export const query = writable('');
 export const result = writable();
 
-export const translate = str => {
+export const reverse = () => {
+  const _langFrom = get(langFrom);
+  const _langTo = get(langTo);
+  langFrom.set(_langTo);
+  langTo.set(_langFrom);
+};
+
+export const translate = () => {
+  const str = get(query).trim();
   if (!str) return;
-  query.set(str);
   const params = new URLSearchParams({
-    query: get(query),
+    query: str,
     langFrom: get(langFrom),
     langTo: get(langTo)
   });
-  result.set(
-    fetch(`http://localhost:${config.backPort}/?${params}`).then(data => data.json())
-  );
+  result.set(fetch(`http://localhost:${config.backPort}/?${params}`).then(data => data.json()));
 };

@@ -14,7 +14,11 @@
   }
 </script>
 
-<style></style>
+<style>
+  select {
+    border-width: 0 1px;
+  }
+</style>
 
 <select bind:value={selected} on:change={setLang}>
   {#each Object.entries(langs) as [title, value]}

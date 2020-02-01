@@ -5,7 +5,9 @@ const parseMtr = require('./parser');
 const config = require('../config');
 
 function getUri(params) {
-  return `https://www.multitran.com/m.exe?s=${params.query}&l1=${params.langFrom}&l2=${params.langTo}&SHL=1`;
+  return encodeURI(
+    `https://www.multitran.com/m.exe?s=${params.query}&l1=${params.langFrom}&l2=${params.langTo}&SHL=1`
+  );
 }
 
 polka()

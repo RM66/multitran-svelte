@@ -1,6 +1,6 @@
 <script>
-  import Footer from "./components/Footer.svelte";
-  import Main from "./components/Main.svelte";
+  import Footer from './components/Footer.svelte';
+  import Main from './components/Main.svelte';
 </script>
 
 <style>
@@ -12,6 +12,9 @@
     --cl-dark-blue: #002554;
     --cl-gray: #aaa;
     --cl-dark-gray: #888;
+    --cl-black: #333;
+    --cl-outline: #4d90fe;
+    --cl-btn-outline: #4c83d7;
     --tr-time: 200ms;
   }
 
@@ -22,7 +25,7 @@
 
   :global(body) {
     box-sizing: border-box;
-    color: #333;
+    color: var(--cl-black);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -30,7 +33,9 @@
   }
 
   :global(*) {
-    font-family: Comfortaa, Verdana, cursive;
+    box-sizing: border-box;
+    font-family: Comfortaa, cursive;
+    outline-color: var(--cl-outline);
   }
 </style>
 

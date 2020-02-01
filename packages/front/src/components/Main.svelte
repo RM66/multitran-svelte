@@ -32,6 +32,7 @@
     font-family: monospace;
     font-size: larger;
     line-height: 44px;
+    text-decoration: none;
     user-select: none;
   }
 
@@ -42,8 +43,8 @@
     color: #fff;
     cursor: pointer;
     margin: -1px -1px -1px 0;
-    padding-right: .75em;
-    transition: background var(--tr-time);;
+    padding-right: 0.75em;
+    transition: background var(--tr-time);
   }
   button:hover {
     background: var(--cl-blue);
@@ -51,15 +52,28 @@
   button:active {
     background: var(--cl-dark-blue);
   }
-</style>
+  button:focus {
+    background: var(--cl-btn-outline);
+    outline: none;
+  }
 
+  @media screen and (max-width: 768px) {
+    img {
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 1em;
+    }
+  }
+</style>
 
 <main>
   <form on:submit|preventDefault={translate}>
     <img src="logo.png" alt="logo" />
     <SearchInput />
     <LangSelect from />
-    <a on:click={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>
+    <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>
     <LangSelect to />
     <button>Translate</button>
   </form>

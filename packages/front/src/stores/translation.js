@@ -1,9 +1,8 @@
 import config from 'appRoot/config.js';
 import { get, writable } from 'svelte/store';
-import langs from '../constants/langs.js';
 
-export const langFrom = writable(langs.English);
-export const langTo = writable(langs.Russian);
+export const langFrom = writable('1');
+export const langTo = writable('2');
 export const query = writable('');
 export const result = writable();
 

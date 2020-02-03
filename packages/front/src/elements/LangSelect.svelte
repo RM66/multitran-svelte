@@ -27,6 +27,7 @@
   }
 
   select {
+    background: transparent;
     border: 0;
     height: 100%;
   }
@@ -41,13 +42,25 @@
       z-index: 1;
     }
 
-    select {
+    select {      
       color: #fff;
       width: 56px;
     }
 
     option {
       color: var(--cl-black);
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    select {      
+      width: 48px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    select {      
+      width: 42px;
     }
   }
 </style>

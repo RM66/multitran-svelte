@@ -7,12 +7,24 @@
     background: 0;
     border: 0;
     font-size: large;
-    font-weight: bold;
     height: 44px;
     margin-left: 0.33em;
     max-width: 50%;
+    min-width: 146px;
     padding-left: 0.33em;
+  }
+
+  @media screen and (max-width: 768px) {
+    input {
+      padding-left: 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    input {
+      font-size: medium;
+    }
   }
 </style>
 
-<input bind:value={$query} type="search" placeholder="Enter the word" />
+<input bind:value="{$query}" type="search" placeholder="Enter the word" />

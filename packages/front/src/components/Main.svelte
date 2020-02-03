@@ -37,23 +37,24 @@
   }
 
   button {
-    background: var(--cl-light-blue);
+    background-color: var(--cl-light-blue);
     border: 0;
     border-radius: 0 var(--img-size) var(--img-size) 0;
     color: #fff;
     cursor: pointer;
+    flex-grow: 1;
     margin: -1px -1px -1px 0;
     padding-right: 0.75em;
-    transition: background var(--tr-time);
+    transition: background-color var(--tr-time);
   }
   button:hover {
-    background: var(--cl-blue);
+    background-color: var(--cl-blue);
   }
   button:active {
-    background: var(--cl-dark-blue);
+    background-color: var(--cl-dark-blue);
   }
   button:focus {
-    background: var(--cl-btn-outline);
+    background-color: var(--cl-btn-outline);
     outline: none;
   }
 
@@ -64,6 +65,20 @@
       position: absolute;
       right: 0;
       top: 1em;
+    }
+
+    form {
+      max-width: 100%;
+    }
+
+    button {
+      background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzVGNjM2OCI+PHBhdGggZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0E2LjQ3MSA2LjQ3MSAwIDAgMCAxNiA5LjUgNi41IDYuNSAwIDEgMCA5LjUgMTZjMS42MSAwIDMuMDktLjU5IDQuMjMtMS41N2wuMjcuMjh2Ljc5bDUgNC45OUwyMC40OSAxOWwtNC45OS01em0tNiAwQzcuMDEgMTQgNSAxMS45OSA1IDkuNVM3LjAxIDUgOS41IDUgMTQgNy4wMSAxNCA5LjUgMTEuOTkgMTQgOS41IDE0eiIvPjwvc3ZnPg==) no-repeat center;
+      font-size: 0;
+      width: 48px;
+    }
+
+    button:hover {
+      background-color: transparent;
     }
   }
 </style>

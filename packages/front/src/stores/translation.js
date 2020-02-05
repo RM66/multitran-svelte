@@ -4,7 +4,7 @@ import { get, writable } from 'svelte/store';
 export const langFrom = writable('1');
 export const langTo = writable('2');
 export const query = writable('');
-export const result = writable();
+export const result = writable([]);
 
 export const reverse = () => {
   const _langFrom = get(langFrom);

@@ -1,7 +1,7 @@
 <script>
   import LangSelect from '../elements/LangSelect.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
-  import { result, reverse, translate } from '../stores/translation.js';
+  import { query, result, reverse, translate } from '../stores/translation.js';
 </script>
 
 <style>
@@ -23,6 +23,11 @@
     border: 1px solid var(--cl-gray);
     border-radius: var(--img-size);
     display: inline-flex;
+    margin-top: 10vh;
+    transition: margin-top var(--tr-time);
+  }
+
+  form:last-child {
     margin-top: 25vh;
   }
 
@@ -92,11 +97,15 @@
     <LangSelect to />
     <button>Translate</button>
   </form>
-  <div>
-    {#await $result}
+  {#await $result}
+    <div>
       <i>loading&hellip;</i>
-    {:then data}
-      <p>{data || ''}</p>
-    {/await}
-  </div>
+    </div>
+  {:then data}
+    {#each data as { type, text }}
+      <div class={type}>
+        {@html text.join('')}
+      </div>
+    {/each}
+  {/await}
 </main>

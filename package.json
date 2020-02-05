@@ -7,7 +7,15 @@
     "email": "roman@yaml.link",
     "url": "https://github.com/RM66"
   },
+  "scripts": {
+    "start:back": "npm -C ./packages/back run start",
+    "start:front": "npm -C ./packages/front run dev"
+  },
   "devDependencies": {
     "lerna": "^3.20.2"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

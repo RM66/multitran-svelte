@@ -55,6 +55,9 @@ const tdTypes = {
   trans: 'tran'
 };
 
+/**
+ * @returns [[{ type: 'head' | 'subj' | 'tran', text: string }, … ], [ … ]]
+ */
 const parseMtr = function(html) {
   let beforeTarget, inTargetTable;
   let currentTd;
@@ -72,14 +75,20 @@ const parseMtr = function(html) {
     },
     ontext(text) {
       if (inTargetTable && currentTd) {
-        const last = result.length ? result[result.length - 1] : {};
-        if (last.type === currentTd) {
-          last.text.push(text);
+        const lastItem = result.length ? result[result.length - 1] : [];
+        const lastBlock = lastItem.length ? lastItem[lastItem.length - 1] : {};
+        if (lastBlock.type === currentTd) {
+          lastBlock.text.push(text);
         } else {
-          result.push({
+          const block = {
             type: currentTd,
             text: [text]
-          });
+          };
+          if (currentTd == 'head') {
+            result.push([block]);
+          } else {
+            lastItem.push(block);
+          }
         }
       }
     },

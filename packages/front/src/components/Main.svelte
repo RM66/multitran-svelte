@@ -102,9 +102,13 @@
       <i>loading&hellip;</i>
     </div>
   {:then data}
-    {#each data as { type, text }}
-      <div class={type}>
-        {@html text.join('')}
+    {#each data as item}
+      <div class="item">
+        {#each item as { type, text }}
+          <div class={type}>
+            {@html text.join('')}
+          </div>
+        {/each}
       </div>
     {/each}
   {/await}

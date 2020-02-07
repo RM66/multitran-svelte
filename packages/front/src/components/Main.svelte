@@ -1,5 +1,6 @@
 <script>
   import LangSelect from '../elements/LangSelect.svelte';
+  import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
   import { query, result, reverse, translate } from '../stores/translation.js';
 </script>
@@ -11,6 +12,7 @@
 
   main {
     flex-grow: 1;
+    padding: 1em;
     text-align: center;
   }
 
@@ -20,6 +22,7 @@
   }
 
   form {
+    background: #fff;
     border: 1px solid var(--cl-gray);
     border-radius: var(--img-size);
     display: inline-flex;
@@ -42,7 +45,7 @@
   }
 
   button {
-    background-color: var(--cl-light-blue);
+    background-color: var(--cl-blue);
     border: 0;
     border-radius: 0 var(--img-size) var(--img-size) 0;
     color: #fff;
@@ -53,10 +56,10 @@
     transition: background-color var(--tr-time);
   }
   button:hover {
-    background-color: var(--cl-blue);
+    background-color: var(--cl-dark-blue);
   }
   button:active {
-    background-color: var(--cl-dark-blue);
+    background-color: var(--cl-darker-blue);
   }
   button:focus {
     background-color: var(--cl-btn-outline);
@@ -64,6 +67,10 @@
   }
 
   @media screen and (max-width: 768px) {
+    main {
+      padding: 0;
+    }
+
     img {
       left: 0;
       margin: auto;
@@ -98,18 +105,10 @@
     <button>Translate</button>
   </form>
   {#await $result}
-    <div>
-      <i>loading&hellip;</i>
-    </div>
-  {:then data}
-    {#each data as item}
-      <div class="item">
-        {#each item as { type, text }}
-          <div class={type}>
-            {@html text.join('')}
-          </div>
-        {/each}
-      </div>
+    <ResultItem preloader />
+  {:then response}
+    {#each response as data}
+      <ResultItem {data} />
     {/each}
   {/await}
 </main>

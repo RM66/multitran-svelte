@@ -14,6 +14,10 @@
     padding-left: 0.33em;
   }
 
+  input::-webkit-search-cancel-button {
+    filter: grayscale(1) contrast(0);
+  }
+
   @media screen and (max-width: 768px) {
     input {
       padding-left: 0.5em;

@@ -13,11 +13,14 @@ export const reverse = () => {
   langTo.set(_langFrom);
 };
 
+let recentQuery;
+
 export const translate = () => {
-  const str = get(query).trim();
-  if (!str) return;
+  const val = get(query).trim();
+  if (!val || val === recentQuery) return;
+  recentQuery = val;
   const params = new URLSearchParams({
-    query: str,
+    query: val,
     langFrom: get(langFrom),
     langTo: get(langTo)
   });

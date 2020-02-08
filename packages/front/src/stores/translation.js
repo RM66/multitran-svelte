@@ -13,16 +13,19 @@ export const reverse = () => {
   langTo.set(_langFrom);
 };
 
-let recentQuery;
+let prevParams;
 
 export const translate = () => {
-  const val = get(query).trim();
-  if (!val || val === recentQuery) return;
-  recentQuery = val;
+  const val = get(query)
+    .trim()
+    .toLowerCase();
+  if (!val) return;
   const params = new URLSearchParams({
     query: val,
     langFrom: get(langFrom),
     langTo: get(langTo)
-  });
+  }).toString();
+  if (params === prevParams) return;
+  prevParams = params;
   result.set(fetch(`http://localhost:${config.backPort}/?${params}`).then(data => data.json()));
 };

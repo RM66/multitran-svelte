@@ -1,5 +1,5 @@
 <script>
-  export let href;
+  export let href = '';
 </script>
 
 <style>
@@ -20,6 +20,6 @@
   }
 </style>
 
-<a {href} target="_blank" rel="noopener">
+<a {href} target="_blank" rel="noopener noreferrer">
   <slot />
 </a>

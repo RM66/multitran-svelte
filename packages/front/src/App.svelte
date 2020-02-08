@@ -4,9 +4,10 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans&display=swap');
 
   :global(:root) {
+    --cl-background: #f2f2f2;
     --cl-blue: #4c77b1;
     --cl-dark-blue: #0f4c81;
     --cl-darker-blue: #002554;
@@ -25,7 +26,7 @@
   }
 
   :global(body) {
-    background: #f2f2f2;
+    background: var(--cl-background);
     box-sizing: border-box;
     color: var(--cl-black);
     display: flex;

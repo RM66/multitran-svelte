@@ -2,7 +2,7 @@
   import LangSelect from '../elements/LangSelect.svelte';
   import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
-  import { query, result, reverse, translate } from '../stores/translation.js';
+  import { sameParams, query, result, reverse, translate } from '../stores/translation.js';
 </script>
 
 <style>
@@ -110,11 +110,13 @@
     <LangSelect to />
     <button>Translate</button>
   </form>
-  {#await $result}
-    <ResultItem preloader />
-  {:then response}
-    {#each response as data}
-      <ResultItem {data} />
-    {/each}
-  {/await}
+  {#if $sameParams}
+    {#await $result}
+      <ResultItem preloader />
+    {:then response}
+      {#each response as data}
+        <ResultItem {data} />
+      {/each}
+    {/await}
+  {/if}
 </main>

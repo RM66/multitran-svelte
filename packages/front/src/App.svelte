@@ -42,7 +42,8 @@
   }
 
   :global([disabled]) {
-    opacity: .75;
+    opacity: 0.75;
+    pointer-events: none;
   }
 </style>
 

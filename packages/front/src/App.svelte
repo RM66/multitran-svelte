@@ -40,6 +40,10 @@
     font-family: Comfortaa, cursive;
     outline-color: var(--cl-outline);
   }
+
+  :global([disabled]) {
+    opacity: .75;
+  }
 </style>
 
 <Main />

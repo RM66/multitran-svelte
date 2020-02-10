@@ -2,7 +2,7 @@
   import LangSelect from '../elements/LangSelect.svelte';
   import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
-  import { sameParams, query, result, reverse, translate } from '../stores/translation.js';
+  import { normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
 </script>
 
 <style>
@@ -108,7 +108,7 @@
     <LangSelect from />
     <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>
     <LangSelect to />
-    <button>Translate</button>
+    <button disabled={!$normalQuery || $sameParams}>Translate</button>
   </form>
   {#if $sameParams}
     {#await $result}

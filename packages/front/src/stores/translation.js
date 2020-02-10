@@ -16,7 +16,7 @@ export const reverse = () => {
 
 let prevParams = writable(new URLSearchParams());
 
-const normalQuery = derived(query, ($query, set) => set($query.trim().toLowerCase()), '');
+export const normalQuery = derived(query, ($query, set) => set($query.trim().toLowerCase()), '');
 
 export const sameParams = derived(
   [prevParams, normalQuery, langFrom, langTo],

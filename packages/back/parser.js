@@ -61,20 +61,23 @@ const tdTypes = {
 const parseMtr = function(html) {
   let beforeTarget, inTargetTable;
   let currentTd;
+  let skip = false;
   const result = [];
 
   const parser = new htmlparser2.Parser({
     onopentag(name, attrs) {
-      if (name === 'form' && attrs.id === 'translation') beforeTarget = true;
-      else if (name === 'table' && beforeTarget) {
+      if (name === 'form' && attrs.id === 'translation') {
+        beforeTarget = true;
+      } else if (name === 'table' && beforeTarget) {
         beforeTarget = false;
         inTargetTable = true;
-      } else if (inTargetTable && name === 'td') {
-        currentTd = tdTypes[attrs.class];
+      } else if (inTargetTable) {
+        if (name === 'td') currentTd = tdTypes[attrs.class];
+        else if (attrs.class === 'small') skip = true;
       }
     },
     ontext(text) {
-      if (inTargetTable && currentTd) {
+      if (inTargetTable && currentTd && !skip) {
         const lastItem = result.length ? result[result.length - 1] : [];
         const lastBlock = lastItem.length ? lastItem[lastItem.length - 1] : {};
         if (lastBlock.type === currentTd) {
@@ -95,7 +98,10 @@ const parseMtr = function(html) {
     onclosetag(name) {
       if (inTargetTable) {
         if (name === 'table') inTargetTable = false;
-        else if (name === 'td') currentTd = null;
+        else if (name === 'td') {
+          currentTd = null;
+          skip = false;
+        }
       }
     }
   });

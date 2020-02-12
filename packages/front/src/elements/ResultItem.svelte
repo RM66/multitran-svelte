@@ -1,6 +1,11 @@
 <script>
   export let data = [];
   export let preloader = false;
+
+  function parseHead(textArr) {
+    const part = textArr.pop();
+    return textArr.join('') + `<i>${part}</i>`;
+  }
 </script>
 
 <style>
@@ -22,7 +27,7 @@
     border-radius: var(--b-radius);
     box-shadow: 0 0 3px 0px var(--cl-gray);
     display: grid;
-    grid-template-columns: 5em auto;
+    grid-template-columns: 5.25em auto;
     margin: 1em auto;
     max-width: 640px;
   }
@@ -73,7 +78,11 @@
   {:else}
     {#each data as { type, text }}
       <div class={type}>
-        {@html text.join('')}
+        {#if type === 'head'}
+          {@html parseHead(text)}
+        {:else}
+          {@html text.join('')}
+        {/if}
       </div>
     {/each}
   {/if}

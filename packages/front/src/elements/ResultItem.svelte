@@ -1,11 +1,8 @@
 <script>
+  import ItemHeadContent from './ItemHeadContent.svelte';
+
   export let data = [];
   export let preloader = false;
-
-  function parseHead(textArr) {
-    const part = textArr.pop();
-    return textArr.join('') + `<i>${part}</i>`;
-  }
 </script>
 
 <style>
@@ -79,7 +76,9 @@
     {#each data as { type, text }}
       <div class={type}>
         {#if type === 'head'}
-          {@html parseHead(text)}
+          <div class="head">
+            <ItemHeadContent {text} />
+          </div>
         {:else}
           {@html text.join('')}
         {/if}

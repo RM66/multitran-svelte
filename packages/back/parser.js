@@ -56,7 +56,7 @@ const tdTypes = {
 };
 
 /**
- * @returns [[{ type: 'head' | 'subj' | 'tran', text: string }, … ], [ … ]]
+ * @returns [[{ type: 'head' | 'subj' | 'tran', text: string[] }, … ], [ … ]]
  */
 const parseMtr = function(html) {
   let beforeTarget, inTargetTable;
@@ -71,9 +71,8 @@ const parseMtr = function(html) {
       } else if (name === 'table' && beforeTarget) {
         beforeTarget = false;
         inTargetTable = true;
-      } else if (inTargetTable) {
-        if (name === 'td') currentTd = tdTypes[attrs.class];
-        else if (attrs.class === 'small') skip = true;
+      } else if (inTargetTable && name === 'td') {
+        currentTd = tdTypes[attrs.class];
       }
     },
     ontext(text) {
@@ -101,6 +100,8 @@ const parseMtr = function(html) {
         else if (name === 'td') {
           currentTd = null;
           skip = false;
+        } else if (name === 'em') {
+          skip = true;
         }
       }
     }

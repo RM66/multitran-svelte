@@ -3,6 +3,7 @@
   import LangSelect from '../elements/LangSelect.svelte';
   import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
+  import ThemeSwitch from '../elements/ThemeSwitch.svelte';
   import { pronounce } from '../services/speech.js';
   import { langFrom, normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
 
@@ -109,6 +110,7 @@
 </style>
 
 <main>
+  <ThemeSwitch />
   <form on:submit|preventDefault={translate}>
     <img src="logo.png" alt="logo" on:click={speak} />
     <SearchInput />

@@ -1,0 +1,58 @@
+<script>
+  function toggle() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+
+<style>
+  input {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+    position: fixed;
+    right: 1em;
+    top: 1em;
+    user-select: none;
+  }
+
+  label::before {
+    border: 1px solid var(--cl-gray);
+    border-radius: 1em;
+    content: '';
+    display: inline-block;
+    font-size: smaller;
+    height: 1em;
+    margin-right: 0.33em;
+    position: relative;
+    top: 2px;
+    width: 1.75em;
+  }
+
+  label::after {
+    background: var(--cl-blue);
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 11px;
+    left: 2px;
+    opacity: 0.75;
+    position: absolute;
+    top: 4px;
+    transition: background var(--tr-time);
+    width: 11px;
+  }
+
+  label:hover::after {
+    background: var(--cl-dark-blue);
+  }
+
+  input:checked + label::after {
+    left: 12px;
+    opacity: 1;
+  }
+</style>
+
+<input type="checkbox" id="dark-mode" on:change="{toggle}" />
+<label for="dark-mode">dark</label>

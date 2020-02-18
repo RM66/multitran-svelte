@@ -1,0 +1,34 @@
+{
+  "name": "Simple Multitran",
+  "short_name": "SimpleMultitran",
+  "start_url": ".",
+  "description": "Online-dictionary • Alternative Multitran client",
+  "categories": "education",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "64x65",
+      "type": "image/png"
+    },
+    {
+      "src": "logo_hi.png",
+      "sizes": "128x130",
+      "type": "image/png"
+    },
+    {
+      "src": "logo_xhi.png",
+      "sizes": "192x195",
+      "type": "image/png"
+    }
+  ],
+  "permissions": {
+    "audio-capture": {
+      "description": "Audio capture"
+    },
+    "speech-recognition": {
+      "description": "Speech recognition"
+    }
+  },
+  "type": "privileged"
+}

@@ -1,8 +1,14 @@
 <script>
+  import langs from '../constants/langs.js';
   import LangSelect from '../elements/LangSelect.svelte';
   import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
-  import { normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
+  import { pronounce } from '../services/speech.js';
+  import { langFrom, normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
+
+  function speak() {
+    pronounce($normalQuery, langs[$langFrom].code);
+  }
 </script>
 
 <style>
@@ -17,6 +23,7 @@
   }
 
   img {
+    cursor: pointer;
     margin: -1px 0 -4px -2px;
     width: var(--img-size);
   }
@@ -103,7 +110,7 @@
 
 <main>
   <form on:submit|preventDefault={translate}>
-    <img src="logo.png" alt="logo" />
+    <img src="logo.png" alt="logo" on:click={speak} />
     <SearchInput />
     <LangSelect from />
     <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>

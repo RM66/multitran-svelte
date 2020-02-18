@@ -39,6 +39,7 @@
       padding: 0.5em;
       pointer-events: none;
       position: absolute;
+      text-transform: uppercase;
       z-index: 1;
     }
 
@@ -66,9 +67,9 @@
 </style>
 
 <div class="lang-select">
-  <span class="lang-code" hidden>{langs[selected].code}</span>
+  <span class="lang-code" hidden>{langs[selected].code.split('-')[0]}</span>
   <select bind:value={selected} on:change={setLang}>
-    {#each sortedLangs as [number, { title, code }]}
+    {#each sortedLangs as [number, { title }]}
       <option disabled={number === other} value={number}>{title}</option>
     {/each}
   </select>

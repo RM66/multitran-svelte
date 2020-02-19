@@ -1,6 +1,14 @@
 <script>
-  function toggle() {
-    document.body.classList.toggle('dark-mode');
+  import { onMount } from 'svelte';
+
+  let val = !!localStorage.getItem('dark-mode');
+
+  $: if (val) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('dark-mode', true);
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.removeItem('dark-mode');
   }
 </script>
 
@@ -10,6 +18,7 @@
   }
 
   label {
+    color: var(--cl-darker-gray);
     cursor: pointer;
     position: fixed;
     right: 1em;
@@ -48,11 +57,15 @@
     background: var(--cl-dark-blue);
   }
 
+  input:checked + label {
+    color: var(--cl-black);
+  }
+
   input:checked + label::after {
     left: 12px;
     opacity: 1;
   }
 </style>
 
-<input type="checkbox" id="dark-mode" on:change="{toggle}" />
+<input type="checkbox" id="dark-mode" bind:checked="{val}" />
 <label for="dark-mode">dark</label>

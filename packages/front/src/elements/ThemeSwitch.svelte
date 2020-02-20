@@ -39,6 +39,11 @@
     width: 1.75em;
   }
 
+  input:checked + label::before {
+    background: #333;
+    border-color: var(--cl-dark-gray);
+  }
+
   label::after {
     background: var(--cl-blue);
     border-radius: 50%;
@@ -49,7 +54,7 @@
     opacity: 0.75;
     position: absolute;
     top: 4px;
-    transition: background var(--tr-time);
+    transition: background var(--tr-time), transform var(--tr-time);
     width: 11px;
   }
 
@@ -57,13 +62,14 @@
     background: var(--cl-dark-blue);
   }
 
-  input:checked + label {
-    color: var(--cl-black);
+  input:checked + label::after {
+    background: var(--cl-dark-blue);
+    opacity: 1;
+    transform: translateX(10px);
   }
 
-  input:checked + label::after {
-    left: 12px;
-    opacity: 1;
+  input:hover:checked + label::after {
+    background: var(--cl-darker-blue);
   }
 </style>
 

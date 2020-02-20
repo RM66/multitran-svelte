@@ -4,7 +4,7 @@
 
 <style>
   footer {
-    color: var(--cl-grey);
+    color: var(--cl-dark-gray);
     font-size: small;
     padding: 1em;
     text-align: center;

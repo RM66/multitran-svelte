@@ -6,6 +6,7 @@
   input {
     background: 0;
     border: 0;
+    color: var(--cl-black);
     font-size: large;
     height: 44px;
     margin-left: 0.33em;

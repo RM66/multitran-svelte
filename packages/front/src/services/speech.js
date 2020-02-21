@@ -5,3 +5,5 @@ export function pronounce(text, lang) {
   utter.lang = lang;
   synth.speak(utter);
 }
+
+export function recognize(lang) {}

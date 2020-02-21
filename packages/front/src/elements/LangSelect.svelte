@@ -31,6 +31,7 @@
     border: 0;
     color: var(--cl-black);
     height: 100%;
+    padding: 0 .25em;
   }
   
   option {

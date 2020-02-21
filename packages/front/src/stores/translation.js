@@ -2,8 +2,11 @@ import config from 'appRoot/config.js';
 import { get, writable, derived } from 'svelte/store';
 
 export const query = writable('');
-export const langFrom = writable('1');
-export const langTo = writable('2');
+export const langFrom = writable(localStorage.getItem('lang-from') || '1');
+export const langTo = writable(localStorage.getItem('lang-to') || '2');
+
+langFrom.subscribe(val => localStorage.setItem('lang-from', val));
+langTo.subscribe(val => localStorage.setItem('lang-to', val));
 
 export const result = writable();
 

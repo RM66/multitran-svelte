@@ -6,4 +6,13 @@ export function pronounce(text, lang) {
   synth.speak(utter);
 }
 
-export function recognize(lang) {}
+export const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+export function recognize(lang) {
+  if (!SpeechRecognition) return;
+  const recognition = new SpeechRecognition();
+  recognition.lang = lang;
+  recognition.start();
+  recognition.onresult = event => console.log(event);
+  recognition.onspeechend = () => recognition.stop();
+}

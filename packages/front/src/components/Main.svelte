@@ -5,7 +5,15 @@
   import SearchInput from '../elements/SearchInput.svelte';
   import ThemeSwitch from '../elements/ThemeSwitch.svelte';
   import { pronounce } from '../services/speech.js';
-  import { langFrom, normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
+  import {
+    langFrom,
+    normalQuery,
+    sameParams,
+    query,
+    result,
+    reverse,
+    translate
+  } from '../stores/translation.js';
 
   function speak() {
     pronounce($normalQuery, langs[$langFrom].code);
@@ -116,7 +124,7 @@
 <main>
   <ThemeSwitch />
   <form on:submit|preventDefault={translate}>
-    <img src="logo.png" alt="logo" on:click={speak} />
+    <img src="logo.png" srcset="logo_hi.png 2x" alt="logo" on:click={speak} />
     <SearchInput />
     <LangSelect from />
     <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>

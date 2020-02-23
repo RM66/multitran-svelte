@@ -1,6 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
-
   let val = !!localStorage.getItem('dark-mode');
 
   $: if (val) {
@@ -73,5 +71,5 @@
   }
 </style>
 
-<input type="checkbox" id="dark-mode" bind:checked="{val}" />
+<input type="checkbox" id="dark-mode" bind:checked={val} />
 <label for="dark-mode">dark</label>

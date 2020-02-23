@@ -1,6 +1,6 @@
 <script>
   import langs from '../constants/langs.js';
-  import { recognize } from '../services/speech.js';
+  import { recognize, SpeechRecognition } from '../services/speech.js';
   import { langFrom, query } from '../stores/translation.js';
 
   function hear() {
@@ -28,6 +28,7 @@
   .microphone {
     background: 0;
     border: 0;
+    cursor: pointer;
     opacity: 0.66;
   }
 
@@ -38,6 +39,10 @@
   @media screen and (max-width: 768px) {
     input {
       padding-left: 0.5em;
+    }
+
+    input::-webkit-input-placeholder {
+      font-size: medium;
     }
   }
 
@@ -52,5 +57,7 @@
   }
 </style>
 
-<input bind:value="{$query}" type="search" placeholder="Enter the word" />
-<button type="button" class="microphone" on:click="{hear}">🎤</button>
+<input bind:value={$query} type="search" placeholder="Enter the word" />
+{#if SpeechRecognition}
+  <button type="button" class="microphone" on:click={hear}>🎤</button>
+{/if}

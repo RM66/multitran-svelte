@@ -8,11 +8,12 @@ export function pronounce(text, lang) {
 
 export const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-export function recognize(lang) {
+export function recognize(lang, cbs) {
   if (!SpeechRecognition) return;
   const recognition = new SpeechRecognition();
   recognition.lang = lang;
-  recognition.start();
-  recognition.onresult = event => console.log(event);
+  recognition.onresult = cbs.onresult;
+  recognition.onend = cbs.onend;
   recognition.onspeechend = () => recognition.stop();
+  recognition.start();
 }

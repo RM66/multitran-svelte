@@ -61,6 +61,18 @@
     opacity: 0.75;
     pointer-events: none;
   }
+
+  @keyframes -global-blinking {
+    0% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 0.25;
+    }
+  }
 </style>
 
 <Main />

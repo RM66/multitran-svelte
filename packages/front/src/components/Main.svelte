@@ -45,7 +45,7 @@
     background: var(--cl-white);
     border: 1px solid var(--cl-gray);
     border-radius: var(--img-size);
-    box-shadow: 0 -1em 1em 1em var(--cl-background);
+    box-shadow: 0 -1em 0 1em var(--cl-background);
     display: inline-flex;
     margin-top: 10vh;
     position: sticky;

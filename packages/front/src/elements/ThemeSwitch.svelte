@@ -22,6 +22,7 @@
     right: 1em;
     top: 1em;
     user-select: none;
+    z-index: 1;
   }
 
   label::before {
@@ -69,7 +70,13 @@
   input:hover:checked + label::after {
     background: var(--cl-darker-blue);
   }
+
+  @media screen and (max-width: 768px) {
+    label {
+      z-index: 0;
+    }
+  }
 </style>
 
-<input type="checkbox" id="dark-mode" bind:checked={val} />
+<input type="checkbox" id="dark-mode" bind:checked="{val}" />
 <label for="dark-mode">dark</label>

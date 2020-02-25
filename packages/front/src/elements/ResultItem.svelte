@@ -6,18 +6,6 @@
 </script>
 
 <style>
-  @keyframes loading {
-    0% {
-      opacity: 0.25;
-    }
-    50% {
-      opacity: 0.75;
-    }
-    100% {
-      opacity: 0.25;
-    }
-  }
-
   .item {
     --b-radius: 10px;
     background: var(--cl-white);
@@ -30,7 +18,7 @@
   }
 
   .item.preloader {
-    animation: loading 1s infinite;
+    animation: blinking 1s infinite;
     background: var(--cl-white);
     height: 75vh;
   }

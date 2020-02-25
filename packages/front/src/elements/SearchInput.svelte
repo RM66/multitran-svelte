@@ -6,10 +6,10 @@
   let recongition = false;
 
   function hear() {
-    recongition = true;
     recognize(langs[$langFrom].code, {
-      onresult: event => alert(JSON.stringify(event)),
-      onend: () => (recongition = false)
+      onStart: () => (recongition = true),
+      onResult: val => ($query = val),
+      onEnd: () => (recongition = false)
     });
   }
 </script>
@@ -67,7 +67,7 @@
   }
 </style>
 
-<input bind:value="{$query}" type="search" placeholder="Enter the word" />
+<input bind:value={$query} type="search" placeholder="Enter the word" />
 {#if SpeechRecognition}
-<button type="button" class="microphone" class:recongition on:click="{hear}">🎤</button>
+  <button type="button" class="microphone" class:recongition on:click={hear}>🎤</button>
 {/if}

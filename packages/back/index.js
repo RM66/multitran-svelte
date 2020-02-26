@@ -13,7 +13,7 @@ function getUri(params) {
 polka()
   .get('/', async (req, res) => {
     const html = await rp(getUri(req.query));
-    res.setHeader('Access-Control-Allow-Origin', '*' /*`http://localhost:${config.frontPort}`*/);
+    res.setHeader('Access-Control-Allow-Origin', `http://localhost:${config.frontPort}`);
     res.end(parseMtr(html));
   })
   .listen(config.backPort, err => {

@@ -3,8 +3,17 @@
   import LangSelect from '../elements/LangSelect.svelte';
   import ResultItem from '../elements/ResultItem.svelte';
   import SearchInput from '../elements/SearchInput.svelte';
+  import ThemeSwitch from '../elements/ThemeSwitch.svelte';
   import { pronounce } from '../services/speech.js';
-  import { langFrom, normalQuery, sameParams, query, result, reverse, translate } from '../stores/translation.js';
+  import {
+    langFrom,
+    normalQuery,
+    sameParams,
+    query,
+    result,
+    reverse,
+    translate
+  } from '../stores/translation.js';
 
   function speak() {
     pronounce($normalQuery, langs[$langFrom].code);
@@ -28,11 +37,15 @@
     width: var(--img-size);
   }
 
+  :global(body.dark-mode) img {
+    filter: invert(1);
+  }
+
   form {
-    background: #fff;
+    background: var(--cl-white);
     border: 1px solid var(--cl-gray);
     border-radius: var(--img-size);
-    box-shadow: 0 -1em 1em 1em var(--cl-background);
+    box-shadow: 0 -1em 0 1em var(--cl-background);
     display: inline-flex;
     margin-top: 10vh;
     position: sticky;
@@ -109,8 +122,9 @@
 </style>
 
 <main>
+  <ThemeSwitch />
   <form on:submit|preventDefault={translate}>
-    <img src="logo.png" alt="logo" on:click={speak} />
+    <img src="logo.png" srcset="logo_hi.png 2x" alt="logo" on:click={speak} />
     <SearchInput />
     <LangSelect from />
     <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>

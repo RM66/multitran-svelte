@@ -29,7 +29,14 @@
   select {
     background: transparent;
     border: 0;
+    color: var(--cl-black);
     height: 100%;
+    padding: 0 .25em;
+  }
+  
+  option {
+    background: var(--cl-white);
+    color: var(--cl-black);
   }
 
   @media screen and (max-width: 768px) {
@@ -44,12 +51,8 @@
     }
 
     select {      
-      color: #fff;
+      color: var(--cl-white);
       width: 56px;
-    }
-
-    option {
-      color: var(--cl-black);
     }
   }
   

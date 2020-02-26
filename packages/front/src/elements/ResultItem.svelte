@@ -6,21 +6,9 @@
 </script>
 
 <style>
-  @keyframes loading {
-    0% {
-      opacity: 0.25;
-    }
-    50% {
-      opacity: 0.75;
-    }
-    100% {
-      opacity: 0.25;
-    }
-  }
-
   .item {
     --b-radius: 10px;
-    background: #fff;
+    background: var(--cl-white);
     border-radius: var(--b-radius);
     box-shadow: 0 0 3px 0px var(--cl-gray);
     display: grid;
@@ -30,8 +18,8 @@
   }
 
   .item.preloader {
-    animation: loading 1s infinite;
-    background: #fff;
+    animation: blinking 1s infinite;
+    background: var(--cl-white);
     height: 75vh;
   }
 
@@ -42,7 +30,7 @@
   .head {
     background: var(--cl-darker-gray);
     border-radius: var(--b-radius) var(--b-radius) 0 0;
-    color: #fff;
+    color: var(--cl-white);
     grid-column: 1 / -1;
     padding: 0.5em;
   }
@@ -58,7 +46,7 @@
   }
 
   .tran {
-    color: #000;
+    color: var(--cl-dark-black);
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     text-align: left;
@@ -74,15 +62,15 @@
     <div />
   {:else}
     {#each data as { type, text }}
-      <div class={type}>
-        {#if type === 'head'}
-          <div class="head">
-            <ItemHeadContent {text} />
-          </div>
-        {:else}
+      {#if type === 'head'}
+        <div class="head">
+          <ItemHeadContent {text} />
+        </div>
+      {:else}
+        <div class={type}>
           {@html text.join('')}
-        {/if}
-      </div>
+        </div>
+      {/if}
     {/each}
   {/if}
 </div>

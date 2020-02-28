@@ -1,9 +1,9 @@
 <script>
   import langs from '../constants/langs.js';
-  import LangSelect from '../elements/LangSelect.svelte';
-  import ResultItem from '../elements/ResultItem.svelte';
-  import SearchInput from '../elements/SearchInput.svelte';
-  import ThemeSwitch from '../elements/ThemeSwitch.svelte';
+  import LangSelect from '../components/LangSelect.svelte';
+  import ResultItem from '../components/ResultItem/ResultItem.svelte';
+  import SearchInput from '../components/SearchInput.svelte';
+  import ThemeSwitch from '../components/ThemeSwitch.svelte';
   import { pronounce } from '../services/speech.js';
   import {
     langFrom,

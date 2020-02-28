@@ -1,6 +1,6 @@
 <script>
-  import Footer from './components/Footer.svelte';
-  import Main from './components/Main.svelte';
+  import Footer from './containers/Footer.svelte';
+  import Main from './containers/Main.svelte';
 </script>
 
 <style>

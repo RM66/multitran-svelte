@@ -1,5 +1,5 @@
 <script>
-  import ExtLink from "../elements/ExtLink.svelte";
+  import ExtLink from '../components/ExtLink.svelte';
 </script>
 
 <style>
@@ -14,6 +14,6 @@
 <footer>
   Powered by
   <ExtLink href="//multitran.com">Multitran</ExtLink>
-  &ensp;|&ensp; Made by
+  &ensp;|&ensp;Made by
   <ExtLink href="//github.com/RM66">Roma Y.</ExtLink>
 </footer>

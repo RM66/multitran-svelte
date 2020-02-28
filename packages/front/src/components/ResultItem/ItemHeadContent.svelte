@@ -31,6 +31,6 @@
   }
 </style>
 
-<span class="word">{@html data.word}</span>
-<span class="transcr">{data.transcr}</span>
-<span class="part">{data.part}</span>
+<span class="word" aria-label="word">{@html data.word}</span>
+<span class="transcr" aria-label="transcription">{data.transcr}</span>
+<span class="part" aria-label="part (type)">{data.part}</span>

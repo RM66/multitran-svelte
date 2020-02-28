@@ -67,7 +67,9 @@
   }
 </style>
 
-<input bind:value={$query} type="search" placeholder="Enter the word" />
+<input bind:value="{$query}" type="search" placeholder="Enter the word" aria-label="search word" />
 {#if SpeechRecognition}
-  <button type="button" class="microphone" class:recongition on:click={hear}>🎤</button>
+<button type="button" on:click="{hear}" class="microphone" class:recongition aria-label="recognize">
+  🎤
+</button>
 {/if}

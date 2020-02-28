@@ -11,7 +11,8 @@
     --cl-background: #f2f2f2;
     --cl-gray: #ccc;
     --cl-dark-gray: #888;
-    --cl-darker-gray: #434242;
+    --cl-darker-gray: #666;
+    --cl-darkest-gray: #434242;
     --cl-black: #111;
     --cl-dark-black: #000;
     --cl-blue: #4c77b1;
@@ -26,7 +27,8 @@
     --cl-white: #000;
     --cl-background: #222;
     --cl-gray: #434242;
-    --cl-darker-gray: #ccc;
+    --cl-darker-gray: #aaa;
+    --cl-darkest-gray: #ccc;
     --cl-black: #f2f2f2;
     --cl-dark-black: #fff;
     --cl-blue: #0f4c81;

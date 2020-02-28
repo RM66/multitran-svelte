@@ -1,7 +1,7 @@
 <script>
   import langs from '../constants/langs.js';
   import LangSelect from '../components/LangSelect.svelte';
-  import ResultItem from '../components/ResultItem/ResultItem.svelte';
+  import ResultItem from '../components/ResultItem/index.svelte';
   import SearchInput from '../components/SearchInput.svelte';
   import ThemeSwitch from '../components/ThemeSwitch.svelte';
   import { pronounce } from '../services/speech.js';
@@ -58,7 +58,7 @@
   }
 
   .reverse {
-    color: var(--cl-dark-gray);
+    color: var(--cl-darker-gray);
     cursor: pointer;
     font-family: monospace;
     font-size: larger;
@@ -124,10 +124,10 @@
 <main>
   <ThemeSwitch />
   <form on:submit|preventDefault={translate}>
-    <img src="logo.png" srcset="logo_hi.png 2x" alt="logo" on:click={speak} />
+    <img on:click={speak} src="logo.png" srcset="logo_hi.png 2x" alt="pronounce" role="button" />
     <SearchInput />
     <LangSelect from />
-    <a href on:click|preventDefault={reverse} class="reverse" tabindex="0">&nbsp;&lt;&gt;&nbsp;</a>
+    <a on:click|preventDefault={reverse} href class="reverse" aria-label="reverse">&nbsp;&lt;&gt;&nbsp;</a>
     <LangSelect to />
     <button disabled={!$normalQuery || $sameParams}>Translate</button>
   </form>

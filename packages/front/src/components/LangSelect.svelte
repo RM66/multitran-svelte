@@ -71,7 +71,7 @@
 
 <div class="lang-select">
   <span class="lang-code" hidden>{langs[selected].code.split('-')[0]}</span>
-  <select bind:value={selected} on:change={setLang}>
+  <select bind:value={selected} on:change={setLang} aria-label="lang select">
     {#each sortedLangs as [number, { title }]}
       <option disabled={number === other} value={number}>{title}</option>
     {/each}

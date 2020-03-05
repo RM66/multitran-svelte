@@ -28,10 +28,13 @@
   }
 
   .head {
-    background: var(--cl-darker-gray);
+    background: var(--cl-darkest-gray);
     border-radius: var(--b-radius) var(--b-radius) 0 0;
     color: var(--cl-white);
+    font-size: inherit;
     grid-column: 1 / -1;
+    font-weight: inherit;
+    margin: 0;
     padding: 0.5em;
   }
 
@@ -56,21 +59,21 @@
   }
 </style>
 
-<div class="item" class:preloader>
+<article class="item" class:preloader>
   {#if preloader}
-    <div class="head" />
+    <h2 class="head" />
     <div />
   {:else}
     {#each data as { type, text }}
       {#if type === 'head'}
-        <div class="head">
+        <h2 class="head">
           <ItemHeadContent {text} />
-        </div>
+        </h2>
       {:else}
-        <div class={type}>
+        <div class={type} aria-label={type === 'tran' ? 'translation' : null}>
           {@html text.join('')}
         </div>
       {/if}
     {/each}
   {/if}
-</div>
+</article>

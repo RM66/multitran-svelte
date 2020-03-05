@@ -16,7 +16,7 @@
   }
 
   label {
-    color: var(--cl-darker-gray);
+    color: var(--cl-darkest-gray);
     cursor: pointer;
     position: fixed;
     right: 1em;
@@ -79,4 +79,4 @@
 </style>
 
 <input type="checkbox" id="dark-mode" bind:checked="{val}" />
-<label for="dark-mode">dark</label>
+<label for="dark-mode" aria-hidden="true">dark</label>

@@ -4,7 +4,7 @@ export default new App({ target: document.body });
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('/build/sw.js')
+    .register('/sw.js')
     .then(registration => {
       console.info(`Service Worker registered! Scope: ${registration.scope}`);
     })

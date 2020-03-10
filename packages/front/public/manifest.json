@@ -5,6 +5,7 @@
   "description": "Online-dictionary • Alternative Multitran client",
   "categories": "education",
   "display": "standalone",
+  "background_color": "#f2f2f2",
   "icons": [
     {
       "src": "logo.png",

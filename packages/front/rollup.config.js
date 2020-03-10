@@ -2,7 +2,6 @@ import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
-import replace from 'rollup-plugin-replace';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 
@@ -57,25 +56,6 @@ export default [
     watch: {
       clearScreen: false
     }
-  },
-  {
-    input: 'src/sw.js',
-    output: {
-      sourcemap: true,
-      format: 'iife',
-      name: 'workbox',
-      file: 'public/build/sw.js'
-    },
-    plugins: [
-      svelte({
-        dev: false
-      }),
-      resolve(),
-      replace({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
-      }),
-      terser()
-    ]
   }
 ];
 

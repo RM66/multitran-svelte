@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start:back": "npm -C ./packages/back run start",
-    "start:front": "npm -C ./packages/front run dev"
+    "build:front": "npm -C ./packages/front run build",
+    "dev:front": "npm -C ./packages/front run dev",
+    "start:front": "npm -C ./packages/front run start"
   },
   "devDependencies": {
     "lerna": "^3.20.2"

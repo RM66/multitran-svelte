@@ -15,6 +15,7 @@
     grid-template-columns: 5.25em auto;
     margin: 1em auto;
     max-width: 640px;
+    padding-bottom: .25em;
   }
 
   .item.preloader {
@@ -34,7 +35,7 @@
     font-size: inherit;
     grid-column: 1 / -1;
     font-weight: inherit;
-    margin: 0;
+    margin: 0 0 .25em;
     padding: 0.5em;
   }
 

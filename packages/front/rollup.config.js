@@ -56,6 +56,15 @@ export default [
     watch: {
       clearScreen: false
     }
+  },
+  {
+    input: 'src/sw.js',
+    output: {
+      format: 'iife',
+      name: 'sw',
+      file: 'public/sw.min.js'
+    },
+    plugins: [production && terser()]
   }
 ];
 

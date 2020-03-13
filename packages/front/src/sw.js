@@ -6,10 +6,16 @@ workbox.routing.registerRoute('', new workbox.strategies.());
 
 const CACHE_NAME = 'static-cache-v1';
 
-const FILES_TO_CACHE = ['/index.html', '/offline.html', '/build/bundle.css', '/build/bundle.js'];
+const URLS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/build/bundle.css',
+  '/build/bundle.js'
+];
 
 self.addEventListener('install', evt => {
-  evt.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE)));
+  evt.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(URLS_TO_CACHE)));
   self.skipWaiting();
 });
 
@@ -33,4 +39,12 @@ self.addEventListener('fetch', evt => {
       return caches.open(CACHE_NAME).then(cache => cache.match('offline.html'));
     })
   );
+  // evt.respondWith(
+  //   caches
+  //     .match(evt.request)
+  //     .then(response => response || fetch(evt.request))
+  //     .catch(() => {
+  //       return caches.open(CACHE_NAME).then(cache => cache.match('offline.html'));
+  //     })
+  // );
 });

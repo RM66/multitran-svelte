@@ -34,6 +34,9 @@ export const sameParams = derived(
 );
 
 export const translate = () => {
+  if (!navigator.onLine) {
+    return alert('Oops, you appear to be offline, this app requires an internet connection.');
+  }
   if (!get(normalQuery) || get(sameParams)) return;
   const params = new URLSearchParams({
     query: get(normalQuery),

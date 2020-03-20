@@ -9,14 +9,15 @@ const CACHE_NAME = 'static-cache-v1';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
-  '/offline.html',
   '/build/bundle.css',
-  '/build/bundle.js'
+  '/build/bundle.js',
+  '/logo.png',
+  '/logo_hi.png'
 ];
 
 self.addEventListener('install', evt => {
-  evt.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(URLS_TO_CACHE)));
   self.skipWaiting();
+  evt.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(URLS_TO_CACHE)));
 });
 
 self.addEventListener('activate', evt => {
@@ -33,18 +34,5 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
-  if (evt.request.mode !== 'navigate') return;
-  evt.respondWith(
-    fetch(evt.request).catch(() => {
-      return caches.open(CACHE_NAME).then(cache => cache.match('offline.html'));
-    })
-  );
-  // evt.respondWith(
-  //   caches
-  //     .match(evt.request)
-  //     .then(response => response || fetch(evt.request))
-  //     .catch(() => {
-  //       return caches.open(CACHE_NAME).then(cache => cache.match('offline.html'));
-  //     })
-  // );
+  evt.respondWith(fetch(evt.request).catch(() => caches.match(evt.request)));
 });
